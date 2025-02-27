@@ -3,9 +3,10 @@ import Square from './Square';
 import styled from 'styled-components';
 import { observer } from 'mobx-react-lite';
 import { boardStore } from '../store';
+import BoardRow from './BoardRow';
 
 const Board = observer(() => {
-
+  console.log('sms')
   function calculateWinner(squares) {
     const lines = [
       [0, 1, 2],
@@ -46,13 +47,13 @@ const Board = observer(() => {
     status = 'Следующий: ' + (boardStore.xIsNext ? 'X' : 'O');
   }
 
-  const StyledBoardRow = styled.section`
-    &:after {
-      clear: both;
-      content: '';
-      display: table;
-    }
-  `
+  // const StyledBoardRow = styled.section`
+  //   &:after {
+  //     clear: both;
+  //     content: '';
+  //     display: table;
+  //   }
+  // `
 
   const RestartButton = styled.button`
     display: flex;
@@ -68,26 +69,26 @@ const Board = observer(() => {
   return (
     <>
       <div className="status">{status}</div>
-      <StyledBoardRow>
+      <BoardRow>
         <Square value={boardStore.squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={boardStore.squares[1]} onSquareClick={() => handleClick(1)} />
         <Square value={boardStore.squares[2]} onSquareClick={() => handleClick(2)} />
-      </StyledBoardRow>
-      <StyledBoardRow>
+      </BoardRow>
+      <BoardRow>
         <Square value={boardStore.squares[3]} onSquareClick={() => handleClick(3)} />
         <Square value={boardStore.squares[4]} onSquareClick={() => handleClick(4)} />
         <Square value={boardStore.squares[5]} onSquareClick={() => handleClick(5)} />
-      </StyledBoardRow>
-      <StyledBoardRow>
+      </BoardRow>
+      <BoardRow>
         <Square value={boardStore.squares[6]} onSquareClick={() => handleClick(6)} />
         <Square value={boardStore.squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={boardStore.squares[8]} onSquareClick={() => handleClick(8)} />
-      </StyledBoardRow>
+      </BoardRow>
       <RestartButton
-          onClick={() => boardStore.restart()}
-        >
-          Новая игра
-        </RestartButton>
+        onClick={() => boardStore.restart()}
+      >
+        Новая игра
+      </RestartButton>
       
     </>
   );

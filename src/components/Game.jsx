@@ -8,10 +8,10 @@ const StyledGame = styled.section`
   width: fit-content;
 `
 
-const Game = () => {
+const Game = ({children}) => {
   return (
     <StyledGame>
-      
+      {children}
     </StyledGame>
   );
 };
