@@ -87,7 +87,7 @@ const Board = observer(() => {
       <RestartButton
         onClick={() => boardStore.restart()}
       >
-        Новая игра
+        Старая игра
       </RestartButton>
       
     </>
